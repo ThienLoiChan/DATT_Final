@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <!-- AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!-- Router-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/font/material-design-icons/Material-Design-Icons.woff'>
+
+    <!-- FFont Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="../css/fontawesome-free-6.2.1-web/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- list -->
+        <div class="card">
+            <div class="card-header"
+                style="font-weight: 600; font-size: large; background-color: rgb(225, 65, 94); color: white;">
+                STATISTICAL</div>
+            <div class="row">
+                <div class="col-3" style="margin: 3%;margin-left: 7%;">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                            Thống kê doanh số theo Năm
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">2022</a>
+                            <a class="dropdown-item" href="#">2023</a>
+                            <a class="dropdown-item" href="#">2024</a>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-3" style="margin: 3%;">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-expanded="false">
+                                Thống kê doanh số theo tháng
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">1</a>
+                                <a class="dropdown-item" href="#">2</a>
+                                <a class="dropdown-item" href="#">3</a>
+                                <a class="dropdown-item" href="#">4</a>
+                                <a class="dropdown-item" href="#">5</a>
+                                <a class="dropdown-item" href="#">6</a>
+                                <a class="dropdown-item" href="#">7</a>
+                                <a class="dropdown-item" href="#">8</a>
+                                <a class="dropdown-item" href="#">9</a>
+                                <a class="dropdown-item" href="#">10</a>
+                                <a class="dropdown-item" href="#">11</a>
+                                <a class="dropdown-item" href="#">12</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3" style="margin: 3%;">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-expanded="false">
+                                Thống kê doanh số theo Qúy
+                            </button>
+                            <div class="dropdown-menu">
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+                <table class="table table-condensed container">
+                    <thead class="bg-success" style="font-variant: small-caps;">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên_SP</th>
+                            <th>Loại_SP</th>
+                            <th>Số lượng nhập về</th>
+                            <th>Số lượng bán ra</th>
+                            <th>Doanh thu</th>
+                            <th>Lợi nhuận</th>
+                            <!-- <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>T001</td>
+                            <td>Táo</td>
+                            <td>Nhập khẩu từ Mỹ</td>
+                            <td>12000</td>
+                            <td>10000</td>
+                            <td>1.000.000 vnđ</td>
+                            <td>200.000 vnđ</td>
+                            <!-- <td>
+                                <div class="btn-group btn-group-xs">
+                                    <button ng-click="edit(item)" class="btn btn-warning">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </button>
+                                </div>
+                            </td> -->
+                        </tr>
+                        <tr>
+                            <td>l001</td>
+                            <td>Lê</td>
+                            <td>Nhập khẩu từ Anh</td>
+                            <td>12000</td>
+                            <td>10000</td>
+                            <td>1.000.000 vnđ</td>
+                            <td>200.000 vnđ</td>
+                            <!-- <td>
+                                <div class="btn-group btn-group-xs">
+                                    <button ng-click="edit(item)" class="btn btn-warning">
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </button>
+                                </div>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div style="margin-left: 5%;">
+                    <h5 style="display: flex;">Tổng doanh thu : <p style="color: red;"> 2.000.000 vnđ</p>  </h5> <br>
+                    <h5 style="display: flex;">Tổng lợi nhuận : <p style="color: green;"> 400.000 vnđ</p></h5>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-danger">
+                        <i class="fa-solid fa-backward-fast"></i>
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-forward-step fa-rotate-180"></i>
+                    </button>
+                    <button class="btn btn-default"></button>
+                    <button class="btn btn-success">
+                        <i class="fa-solid fa-forward-step"></i>
+                    </button>
+                    <button class="btn btn-info">
+                        <i class="fa-solid fa-forward-fast"></i>
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+</body>
+
+</html>

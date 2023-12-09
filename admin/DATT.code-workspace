@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "DATT",
+			"path": ".."
+		},
+		{
+			"name": "fontawesome-free-6.2.1-web",
+			"path": "../../../DuAn1/j6_asm/WebsiteBanVeXemPhim_TicketMen/TicketMen/datn/src/main/resources/static/CSS/fontawesome-free-6.2.1-web"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "DATT"
+	}
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    
+    <!-- AngularJS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
+    <!-- Router-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/font/material-design-icons/Material-Design-Icons.woff'>
+
+    <!-- FFont Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/fontawesome-free-6.2.1-web/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+    <!-- tble -->
+
+    <div class="card">
+        <a href="./list.html" ng-click="create()" class="btn btn-primary" style="width: 21%;color: white;">
+            <i class="fa-solid fa-list"></i> Xem danh sách sản phẩm
+        </a>
+        <div class="card-header" style="font-weight: 600; font-size: large; background-color: rgb(225, 65, 94); color: white;">
+            PRODUCT EDITION</div>
+        <div class="card-boby">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <label for="image" class="mt-4">
+                        <img 
+                        src="../images/no-image.png" alt="" style="max-width: 100%; max-height: 50%;margin-left: 5%;" class="img-fluid">
+                        
+                    </label>
+                </div>
+                <div class="col-sm-8 mt-3">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div style="font-weight: 500;">Tên SP</div>
+                            <input ng-model="form.name" class="form-control" style="width: 95%;">
+                        </div>
+                        
+                        <div class="form-group col-sm-6">
+                            <div style="font-weight: 500;">Loại SP</div>
+                            <select  ng-model="form.category.id" class="form-control" style="width: 95%;">
+                                <option>Nhập khẩu từ Mĩ</option>
+                                <option>Nhập khẩu từ Anh</option>
+                                <option>Nhập khẩu từ Nhật</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div style="font-weight: 500;">Image</div>
+                            <input type="file" class="form-control" id="poster" style="width: 95%;"
+                            onchange="angular.element(this).scope().imageChanged(this.files)">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div style="font-weight: 500;">Đơn giá</div>
+                            <input ng-model="form.age" class="form-control" style="width: 95%;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div style="font-weight: 500;">Giảm giá</div>
+                            <input ng-model="form.age" class="form-control" style="width: 95%;">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div style="font-weight: 500;">Trạng thái</div>
+                            <input ng-model="form.age" class="form-control" style="width: 95%;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div style="font-weight: 500;">Số lượng</div>
+                            <input ng-model="form.age" class="form-control" style="width: 95%;">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-12">
+                            <div style="font-weight: 500;">Mô tả</div>
+                            <textarea ng-model="form.movieContent" class="form-control" style="width: 98%;" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button ng-click="create()" class="btn btn-primary">
+                <i class="fa fa-plus" aria-hidden="true"></i> Create
+            </button>
+            <button ng-click="update()" class="btn btn-success">
+                <i class="fa-solid fa-floppy-disk"></i> Save
+            </button>
+            <button ng-click="delete(form)" class="btn btn-danger">
+                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+            </button>
+            <button ng-click="reset()" class="btn btn-info">
+                <i class="fa fa-refresh" aria-hidden="true"></i> Reset
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
