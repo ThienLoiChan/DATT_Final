@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Detail</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/styles/bootstrap4/bootstrap.min.css}">
+    <link th:href="@{/customer/plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/plugins/OwlCarousel2-2.2.1/owl.carousel.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/plugins/OwlCarousel2-2.2.1/owl.theme.default.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/plugins/OwlCarousel2-2.2.1/animate.css}">
+    <link rel="stylesheet" th:href="@{/customer/plugins/themify-icons/themify-icons.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/plugins/jquery-ui-1.12.1.custom/jquery-ui.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/styles/single_styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/styles/single_responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/customer/styles/detail.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body ng-app="detailApp" ng-controller="detailCtrl">
+
+<div class="super_container">
+
+    <!-- Header -->
+
+    <header class="header trans_300">
+
+        <!-- Top Navigation -->
+
+        <div class="top_nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="top_nav_left">Miễn phí ship cho đơn hàng từ 200k</div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <span class="lienHe">Liên hệ hotline 0909909999</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+
+        <div class="main_nav_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-right">
+                        <div class="logo_container">
+                            <a href="#">Golden<span>Feet</span></a>
+                        </div>
+                        <nav class="navbar">
+                            <ul class="navbar_menu">
+                                <li><a href="/index">TRANG CHỦ</a></li>
+                                <li><a href="/index">MUA SẮM</a></li>
+                                <li><a href="/index">LIÊN HỆ</a></li>
+                            </ul>
+                            <ul class="navbar_user">
+
+                                <li>
+                                    <a>
+                                        <div class="dropdown">
+                                            <a class="userLogin" data-toggle="dropdown">
+                                                <i ng-if="!login" class="fa fa-user" aria-hidden="true">Tài
+                                                    khoản</i>
+                                                <i ng-if="login" class="fa fa-user" aria-hidden="true"> Xin chào,
+                                                    {{username}}</i>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a ng-if="!login" class="dropdown-item itemUser" href="/login">Đăng nhập</a>
+                                                <a ng-if="!login" class="dropdown-item itemUser" href="/register">Đăng ký</a>
+                                                <a ng-if="login" class="dropdown-item itemUser" href="/change-information">Chỉnh sửa</a>
+                                                <a ng-if="login" class="dropdown-item itemUser" href="/change-password">Đổi mật khẩu</a>
+                                                <a ng-if="login" class="dropdown-item itemUser" href="/my-order">Đơn hàng</a>
+                                                <a ng-if="login" class="dropdown-item itemUser" ng-click="logout()" href="#">Đăng xuất</a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="checkout">
+                                    <a class="shoppingCart" href="shopping-cart">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <span id="checkout_items" class="checkout_items">{{soLuongGioHang}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="hamburger_container">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="fs_menu_overlay"></div>
+
+    <div class="container single_product_container">
+        <div class="row">
+            <div class="col">
+
+                <!-- Breadcrumbs -->
+
+                <div class="breadcrumbs d-flex flex-row align-items-center">
+                    <ul>
+                        <li><a href="/index">Trang chủ</a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Chi tiết</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <h3>{{objectGiay.TenGiay}}</h3>
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="{{srcImage}}/{{giay.hinhAnh}}" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{srcImage}}/{{giay.hinhAnh}}" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{srcImage}}/{{giay.hinhAnh}}" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{srcImage}}/{{giay.hinhAnh}}" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{srcImage}}/{{giay.hinhAnh}}" alt="Second slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="headerA">
+                        <strong>1,990,000 đ</strong>
+                        <strike>2,290,000 đ</strike>
+                        <span>-15%</span><span class="traGop">Trả góp 0%</span>
+                    </div>
+                    <div class="cauHinh">
+                        <h4>Chi tiết giày</h4>
+                        <ul>
+                            <li>Đối tượng sử dụng: {{giay.loaiGiay.tenLoai}}</li>
+                            <li>Chất liệu: Da, khác</li>
+                            <li>Chiều cao cổ giày: Cổ thấp</li>
+                            <li>Tình trạng: mới 100%</li>
+                            <li>Xuất sứ: <span class="label-danger">Mỹ</span></li>
+                            <li>Hãng: <span class="label-warning">{{objectGiay.hangGiay.tenHang}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="tablePromotions">
+                        <div class="headPromotions">
+                            <h4>Khuyến mãi</h4>
+                            <div>Giá và khuyến mãi dự kiến áp dụng đến 23:59 31/03</div>
+                        </div>
+                        <ul>
+                            <li>
+                                Giảm 30% khi mua kèm (không áp dụng kèm khuyến mãi khác) (<a href="#">Xem chi tiết</a>)
+                            </li>
+                            <li>
+                                Nhập mã DMX100 giảm 3% tối đa 100.000đ khi thanh toán quét QRcode qua App của ngân hàng (<a href="#">click xem chi tiết</a>)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <div class="product_color col-sm-6">
+                            <span>Chọn màu:</span>
+                            <ul>
+                                <li style="background: #e54e5d"></li>
+                                <li style="background: #252525"></li>
+                                <li style="background: #60b3f3"></li>
+                            </ul>
+                        </div>
+                        <div class="product_size col-sm-6">
+                            <label for="cars">Chọn size:</label>
+                            <select id="cars">
+                                <option value="36" selected>36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39" >39</option>
+                                <option value="40" >40</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+                        <span class="soLuong">Số lượng:</span>
+                        <div class="quantity_selector">
+                            <span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                            <span id="quantity_value">1</span>
+                            <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="red_button add_to_cart_button"><a ng-click="addToCart(giay)" href="">Thêm vào giỏ hàng</a></div>
+                        <div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Tabs -->
+
+    <div class="tabs_section_container">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="tabs_container">
+                        <ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
+                            <li class="tab active" data-active-tab="tab_1"><span>Mô tả</span></li>
+                            <li class="tab" data-active-tab="tab_2"><span>Thông tin bổ sung</span></li>
+                            <li class="tab" data-active-tab="tab_3"><span>Đánh giá ({{soLuongDanhGia}})</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                    <!-- Tab Description -->
+
+                    <div id="tab_1" class="tab_container active">
+                        <div class="row">
+                            <div class="col-lg-5 desc_col">
+                                <div class="tab_title">
+                                    <h4>Mô tả</h4>
+                                </div>
+                                <div class="tab_text_block">
+                                    <h2>Thiết kế</h2>
+                                    <p>
+                                        Được thiết kế bởi Bruce Kilgore vào năm 1982 với ý tưởng đặt tên từ chiếc chuyên cơ chuyên chở tổng thống mỹ AIR FORCE ONE , AF1 đã nhanh chóng trở thành đôi giày mang tính cách mạng trong giới sneaker, sản phẩm được bán hết trong một thời gian kỷ lục.
+                                        Cho dù đã gần 40 năm trôi qua NIKE AIR FORCE 1 vẫn đem lại hàng trăm triệu USD hàng năm cho NIKE.
+                                    </p>
+                                </div>
+                                <div class="tab_image">
+                                    <img src="images/sp/{{objectGiay.HinhAnh[3]}}" alt="">
+                                </div>
+                                <div class="tab_text_block">
+                                    <h2>Nhận định từ chuyên gia</h2>
+                                    <p>Air Force 1 là 1 trong những sneaker định hướng đầu tiên của Nike. Đây sẽ luôn luôn là đôi giày thể thao bóng rổ đầu tiên có công nghệ đệm Air mang tính cách mạng của Swoosh bên trong gót chân của nó, và cũng
+                                        là thử nghiệm đầu tiên của nó với kết cấu chống trượt – một quy trình vẫn được sử dụng cho đến ngày nay trong sản xuất giày thể thao. Nhưng đáng chú ý nhất, AF1 sẽ là bước đột phá đầu tiên của nhà thiết kế huyền
+                                        thoại Nike Bruce Kilgore vào thế giới thiết kế giày thể thao bóng rổ.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 offset-lg-2 desc_col">
+                                <div class="tab_image">
+                                    <img src="images/sp/{{objectGiay.HinhAnh[1]}}" alt="">
+                                </div>
+                                <div class="tab_text_block">
+                                    <h2>Tóm lại</h2>
+                                    <p>Giày Nike Air Force 1 Low GS ‘Year of the Tiger’ hiện đã có mặt tại GoldenFeet với mức giá hấp dẫn nhất</p>
+                                    <p>Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut...</p>
+                                </div>
+                                <div class="tab_image desc_last">
+                                    <img src="images/sp/{{objectGiay.HinhAnh[4]}}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Additional Info -->
+
+                    <div id="tab_2" class="tab_container">
+                        <div class="row">
+                            <div class="col additional_info_col">
+                                <div class="tab_title additional_info_title">
+                                    <h4>Thông tin bổ sung</h4>
+                                </div>
+                                <p>Trọng lượng:<span>N/A</span></p>
+                                <p>SIZE:<span>36, 36.5, 37.5, 38, 39, 40</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Reviews -->
+
+                    <div id="tab_3" class="tab_container">
+                        <div class="row">
+
+                            <!-- User Reviews -->
+
+                            <div class="col-lg-6 reviews_col">
+                                <div class="tab_title reviews_title">
+                                    <h4>Đánh giá ({{soLuongDanhGia}})</h4>
+                                </div>
+                                <!-- User Review -->
+                                <div ng-if="!checkDanhGia" class="chuaCoDanhGia">Sản phẩm này chưa có đánh giá nào</div>
+                                <div ng-if="checkDanhGia" class="user_review_container d-flex flex-column flex-sm-row" ng-repeat="danhGia in listDanhGia">
+                                    <div class="user">
+                                        <img class="img-thumbnail" ng-src="{{srcImage}}/{{danhGia.hinh}}">
+                                        <div class="user_rating">
+                                            <ul class="star_rating">
+                                                <li ng-repeat="n in [] | range:danhGia.soSao"><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li ng-repeat="n in [] | range:(5-danhGia.soSao)"><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="review">
+                                        <div class="review_date">{{danhGia.ngayDanhGia}}</div>
+                                        <div class="user_name">{{danhGia.hoVaTen}}</div>
+                                        <p>{{danhGia.nhanXet}}</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- Add Review -->
+
+                            <div class="col-lg-6 add_review_col">
+                                <form>
+                                    <div class="add_review">
+                                        <div>
+                                            <h1>Thêm đánh giá</h1>
+                                            <input ng-model="DanhGia.HoVaTen" class="form_input input_name" type="text" name="name" placeholder="Họ và tên*" required="required">
+                                            <input ng-model="DanhGia.Email" class="form_input input_email" type="email" name="email" placeholder="Email*" required="required">
+                                        </div>
+                                        <div style="margin: 15px 0;">
+                                            <input name="rdoGioiTinh" type="radio" value="Nam" checked>
+                                            <span>Nam</span>
+                                            <input style="margin-left: 8px;" name="rdoGioiTinh" type="radio" value="Nu">
+                                            <span>Nữ</span>
+                                        </div>
+                                        <div>
+                                            <h1>Số sao:</h1>
+                                            <ul class="user_star_rating">
+                                                <li><i class="fa fa-star" ng-click="guiSao(1)" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" ng-click="guiSao(2)" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" ng-click="guiSao(3)" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" ng-click="guiSao(4)" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star-o" ng-click="guiSao(5)" aria-hidden="true"></i></li>
+                                            </ul>
+                                            <textarea ng-model="DanhGia.NhanXet" id="review_message" class="input_review" name="message" placeholder="Nhận xét" rows="4" required data-error="Viết đánh giá của bạn"></textarea>
+                                        </div>
+                                        <div class="text-left text-sm-right">
+                                            <button ng-click="guiDanhGia()" id="review_submit" type="submit" class="red_button review_submit_btn trans_300" value="Submit">Gửi</button>
+                                        </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <fieldset class="fieldSet">
+        <h4>Các giày khác</h4>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp2_1.png"></a>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp3_1.png"></a>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp4_1.png"></a>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp5_1.png"></a>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp6_1.png"></a>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp7_1.png"></a>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp8_1.png"></a>
+        <a href="#"><img class="img-thumbnail" src="{{srcImage}}/sp10_1.png"></a>
+    </fieldset>
+</div>
+
+<!-- Benefit -->
+
+<div class="benefit">
+    <div class="container">
+        <div class="row benefit_row">
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Miễn phí vận chuyển</h6>
+                        <p>Miễn phí vận chuyển cho đơn hàng từ 200,000đ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Thanh toán linh hoạt</h6>
+                        <p>Thanh toán sau khi nhận hàng hoặc thanh toán qua thẻ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>45 ngày đổi trả</h6>
+                        <p>Miễn phí đổi trả cho đơn hàng dưới 45 ngày</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Mở cả tuần</h6>
+                        <p>8h - 21h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
+                    <h4>Bảng tin</h4>
+                    <p>Đăng ký nhận bảng tin để được nhận ưu đãi 20% khi mua hàng lần đầu</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form>
+                    <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
+                        <input id="newsletter_email" type="email" placeholder="Địa chỉ email của bạn" required="required" data-error="Valid email is required.">
+                        <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
+                    <ul class="footer_nav">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="/contact">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer_nav_container">
+                    <div class="cr">©2023 All Rights Reserverd. Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#">Me</a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+<script th:src="@{/customer/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/customer/styles/bootstrap4/popper.js}"></script>
+<script th:src="@{/customer/styles/bootstrap4/bootstrap.min.js}"></script>
+<script th:src="@{/customer/plugins/Isotope/isotope.pkgd.min.js}"></script>
+<script th:src="@{/customer/plugins/OwlCarousel2-2.2.1/owl.carousel.js}"></script>
+<script th:src="@{/customer/plugins/easing/easing.js}"></script>
+<script th:src="@{/customer/plugins/jquery-ui-1.12.1.custom/jquery-ui.js}"></script>
+<script th:src="@{/customer/js/single_custom.js}"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+<script th:src="@{/customer/js/detail_api.js}"></script>
+</body>
+
+</html>
